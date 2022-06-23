@@ -1,5 +1,5 @@
 #!/bin/bash
 
-[ -z "$language" ] && language="en"
+[ -z "$language" ] && language=$1
 
 echo "Language is $language"

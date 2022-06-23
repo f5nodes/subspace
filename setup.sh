@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "Language is $1"
+echo "Language is $2"

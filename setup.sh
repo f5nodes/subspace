@@ -1,5 +1,3 @@
 #!/bin/bash
 
-[ -z "$language" ] && language=$1
-
-echo "Language is $language"
+[ -z "$language" ] && echo "$language and $1 and $2"

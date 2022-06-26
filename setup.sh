@@ -1,3 +1,3 @@
 #!/bin/bash
 
-[ -z "$language" ] && echo "$language and $1 and $2"
+[ -z "$language" ] && echo "$1"

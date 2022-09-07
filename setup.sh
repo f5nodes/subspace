@@ -15,10 +15,11 @@ if [ -f "$bash_profile" ]; then
 fi
 sleep 1
 
+sudo apt update && sudo apt install ocl-icd-opencl-dev libopencl-clang-dev libgomp1 -y
 cd $HOME
 rm -rf subspace*
-wget -O subspace-node https://github.com/subspace/subspace/releases/download/gemini-1b-2022-jun-18/subspace-node-ubuntu-x86_64-gemini-1b-2022-jun-18
-wget -O subspace-farmer https://github.com/subspace/subspace/releases/download/gemini-1b-2022-jun-18/subspace-farmer-ubuntu-x86_64-gemini-1b-2022-jun-18
+wget -O subspace-node https://github.com/subspace/subspace/releases/download/gemini-2a-2022-sep-06/subspace-node-ubuntu-x86_64-gemini-2a-2022-sep-06
+wget -O subspace-farmer https://github.com/subspace/subspace/releases/download/gemini-2a-2022-sep-06/subspace-farmer-ubuntu-x86_64-gemini-2a-2022-sep-06
 chmod +x subspace*
 mv subspace* /usr/local/bin/
 
@@ -35,7 +36,7 @@ After=network.target
 [Service]
 User=$USER
 Type=simple
-ExecStart=$(which subspace-node) --chain gemini-1 --execution wasm --keep-blocks 1024 --pruning 1024 --validator --name $SUBSPACE_NODENAME
+ExecStart=/usr/local/bin/subspace-node --chain gemini-2a --execution wasm --state-pruning archive --validator --name $SUBSPACE_NODENAME
 Restart=on-failure
 LimitNOFILE=65535
 
@@ -50,7 +51,7 @@ After=network.target
 [Service]
 User=$USER
 Type=simple
-ExecStart=$(which subspace-farmer) farm --reward-address $SUBSPACE_WALLET --plot-size $PLOT_SIZE
+ExecStart=/usr/local/bin/subspace-farmer farm --reward-address $SUBSPACE_WALLET --plot-size $PLOT_SIZE
 Restart=on-failure
 LimitNOFILE=65535
 

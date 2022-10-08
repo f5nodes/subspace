@@ -67,7 +67,7 @@ sudo systemctl restart subspaced
 sleep 10
 sudo systemctl restart subspaced-farmer
 
-echo -e "\n\e[93mSubspace Gemini Non-Incentivized Stress-Test\e[0m"
+echo -e "\n\e[93mSubspace Gemini II\e[0m"
 echo -e '\n\e[94mСтатус ноди\e[0m\n' && sleep 1
 if [[ `service subspaced status | grep active` =~ "running" ]]; then
   echo -e "Ваша Subspace нода \e[92mвстановлена та працює\e[0m!"

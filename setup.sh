@@ -16,11 +16,11 @@ fi
 
 sudo apt update && sudo apt install ocl-icd-opencl-dev libopencl-clang-dev libgomp1 -y
 cd $HOME
-wget -O subspace-cli https://github.com/subspace/subspace-cli/releases/download/v0.5.1-alpha-2/subspace-cli-ubuntu-x86_64-skylake-v0.5.1-alpha-2
-sudo chmod +x subspace-cli
-sudo mv subspace-cli /usr/local/bin/
-sudo rm -rf $HOME/.config/subspace-cli
-/usr/local/bin/subspace-cli init
+wget -O pulsar https://github.com/subspace/pulsar/releases/download/v0.6.0-alpha/pulsar-ubuntu-x86_64-skylake-v0.6.0-alpha
+sudo chmod +x pulsar
+sudo mv pulsar /usr/local/bin/
+sudo rm -rf $HOME/.config/pulsar
+/usr/local/bin/pulsar init
 
 source ~/.bash_profile
 sleep 1
@@ -32,7 +32,7 @@ After=network.target
 [Service]
 User=$USER
 Type=simple
-ExecStart=/usr/local/bin/subspace-cli farm --verbose
+ExecStart=/usr/local/bin/pulsar farm --verbose
 Restart=on-failure
 LimitNOFILE=1024000
 

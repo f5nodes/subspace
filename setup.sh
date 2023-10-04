@@ -14,10 +14,11 @@ if [ -f "$bash_profile" ]; then
     . $HOME/.bash_profile
 fi
 
+sudo apt update && sudo apt install ocl-icd-opencl-dev libopencl-clang-dev libgomp1 jq -y
+
 RELEASE_INFO=$(curl --silent https://api.github.com/repos/subspace/pulsar/releases/latest)
 TAG_NAME=$(echo $RELEASE_INFO | jq -r '.tag_name')
 
-sudo apt update && sudo apt install ocl-icd-opencl-dev libopencl-clang-dev libgomp1 -y
 cd $HOME
 wget -O pulsar https://github.com/subspace/pulsar/releases/download/${TAG_NAME}/pulsar-ubuntu-x86_64-skylake-${TAG_NAME}
 sudo chmod +x pulsar
